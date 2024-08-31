@@ -1,0 +1,40 @@
+double? basicCalculator(double num1, double num2, String operator) {
+  switch (operator) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    case '/':
+      if (num2 == 0) {
+        print("Error: Division by zero");
+        return null;
+      }
+      return num1 / num2;
+    case '%':
+      if (num2 == 0) {
+        print("Error: Division by zero");
+        return null;
+      }
+      return num1 % num2;
+    default:
+      print("Invalid operator");
+      return null;
+  }
+}
+
+double? extendedCalculator(String expression) {
+  try {
+    double result = double.parse(expression.replaceAll(RegExp(r'[^0-9+\-*/%]'), ''));
+    return result;
+  } catch (e) {
+    print("Error: Invalid expression");
+    return null;
+  }
+}
+
+void main() {
+  print(basicCalculator(10, 2, '/'));  // Output: 5.0
+  print(extendedCalculator("10 + 20 * 3"));  // Output: 70
+}

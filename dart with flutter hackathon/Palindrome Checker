@@ -1,0 +1,16 @@
+bool isPalindrome(String input) {
+  String cleaned = input.replaceAll(RegExp(r'[^A-Za-z0-9]'), '').toLowerCase();
+  
+  String reversed = cleaned.split('').reversed.join('');
+  return cleaned == reversed;
+}
+
+bool isNumericPalindrome(int number) {
+  String strNum = number.toString();
+  return isPalindrome(strNum);
+}
+
+void main() {
+  print(isPalindrome("A man, a plan, a canal, Panama")); // Output: true
+  print(isNumericPalindrome(12321)); // Output: true
+}

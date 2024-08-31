@@ -1,0 +1,20 @@
+import 'dart:math';
+
+void compareSortingPerformance() {
+  List<int> list = List.generate(1000, (_) => Random().nextInt(1000));
+  
+  var start = DateTime.now();
+  quickSort([...list]);
+  var quickSortTime = DateTime.now().difference(start).inMilliseconds;
+  
+  start = DateTime.now();
+  mergeSort([...list]);
+  var mergeSortTime = DateTime.now().difference(start).inMilliseconds;
+  
+  print('Quick Sort: $quickSortTime ms');
+  print('Merge Sort: $mergeSortTime ms');
+}
+
+void main() {
+  compareSortingPerformance();
+}
